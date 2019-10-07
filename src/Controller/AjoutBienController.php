@@ -55,20 +55,57 @@ class AjoutBienController extends AbstractController
     }
     
     /**
-     * @Route("/RechercheParBien", name="RechercheParBien")
-     */
-    public function RechercheParBien($id){
-        $qb = $this->_em->createQueryBuilder('b');
+      * 
+      *@Route("/bien/update/{id}",name="upd_route")
+      * 
+      */     
+     public function updateArticle(Request $request, $id){
+         
+        $bien = new Bien() ;
+        $bien = $this->getDoctrine()->getManager()->getRepository(Bien::class)->getUnBien($id);
         
-        $qb->select('b')
-                ->from(Bien::class,'b')
-                ->innerJoin(Type::class,'t','WITH','t.id=b.type')
-                ->where('t.id=:id')
-                ->setParametre('id',$id);
-        $query = $qb ->getQuery();
-        $result = $query ->getResult();
+        //$id = $session->get('login');
+        $request->getSession()->getFlashBag()->add('notice', '');
         
-        return $result ;
+        $form = $this->createForm(BienType::class, $bien);
+        
+        if($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+                $request->getSession()->getFlashBag()->add('success', 'Article modifié avec succès.');
+                return $this->redirectToRoute('Afficher_bien',array('id'=>$id));
+            }
+        }
+        return $this->render( 'ajout_bien/AjoutBien.html.twig', array(
+            'form' =>$form->createView(), 'bien'=>$bien));
     }
+     /**
+      * @Route("/liste_par_type/{id}", name="listebientype")
+      */
+     
+    public function listerBienParType(Request $request, $id) {
+       
+        $em = $this->getDoctrine()->getManager();
+        $type = $em->getRepository(Bien::class)->rechercherParType($id);    
+        return $this->render('ajout_bien/BienParType.html.twig',array('bien'=>$type));
+     }
+     
+    
+      /**
+      *
+      *@Route("/article/supprimer/{id}",name="del_art")
+      *
+      */
+    public function deleteBien( $id){
+
+        $bien = $this->getDoctrine()->getManager()->getRepository(Bien::class)->getUnBien($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($bien);
+        $em->flush();
+        return $this->redirectToRoute('Afficher_bien');
+    }
+ 
     
 }

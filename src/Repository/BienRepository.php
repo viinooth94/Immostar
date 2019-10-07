@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Bien;
+use App\Entity\Type;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Controller\Session; 
 
 /**
  * @method Bien|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +20,41 @@ class BienRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Bien::class);
     }
+    
+    public function getUnBien($id)
+    {
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('b')
+            ->from(Bien::class,'b')
+            ->where('b.id = :id')
+            ->setParameter('id', $id);
+        
+        $query = $qb->getQuery();
+        
+        $result = $query->getOneOrNullResult();
+        
+        return $result;
+    }
+    
+    public function rechercherParType($type) {
+
+        $queryBuilder = $this->_em->createQueryBuilder('b') ;
+        $queryBuilder
+
+        ->select('b')
+            ->from(Bien::class,'b')
+            ->innerJoin(\App\Entity\Type::class,'c','WITH','c.id = b.Type')
+            ->where('c.id= :id')
+            ->setParameter('id',$type);
+        $query= $queryBuilder->getQuery();
+        $result= $query->getResult();
+
+
+        return $result;
+
+    } 
+    
+      
 
     // /**
     //  * @return Bien[] Returns an array of Bien objects
