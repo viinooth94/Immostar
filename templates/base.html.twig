@@ -1,0 +1,29 @@
+{% block session %}{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}GSB{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/bootstrap-grid.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/bootstrap-reboot.css') }}" rel="stylesheet" />
+            <link href="{{ asset('css/gsb.css') }}" rel="stylesheet" />
+        {% endblock %}
+        {% block icnon %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('img/gsb.gif') }}" />
+        {%endblock %}
+    </head>
+    <body>
+        {% block menu %}
+            <center>
+            <a class="navbar-brand" href="/">
+            <img src="{{ asset('img/maison.jpeg') }}" width="300" >
+            </a>
+            </center>
+            <br/>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

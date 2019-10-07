@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block title %}
+Formulaire Ajout Bien
+{% endblock %}
+{% block body %}
+    
+    <h3 align="center" > Affichage des différents Biens </h3>
+    
+    <table  style ="border:2px solid black; margin:auto;" align="center">
+        
+            <thead>
+                <tr style ="border:4px solid black;">
+                    <th>   Les biens: </th>
+                </tr>
+            </thead>
+            <tr style ="background-color: #27eade; border:4px solid black;">
+                <td  style ="border:4px solid black;">n° du bien </td>
+                <td style ="border:4px solid black;">Nombre de Piece</td>
+                <td style ="border:4px solid black;">Nombre de Chambre </td>
+                <td style ="border:4px solid black;">Superficie du bien </td>
+                <td style ="border:4px solid black;">Prix  </td>
+                <td style ="border:4px solid black;">Chauffage </td>
+                <td style ="border:4px solid black;">Annee </td>
+                <td style ="border:4px solid black;">Lieu </td>
+                <td style ="border:4px solid black;">Etat actuel </td>
+            </tr>
+            {% for unBien in bien %}
+            <tr style ="border:4px solid black;">
+                <td style="background-color: #ea2786; border:4px solid #27eade;">{{ unBien.id }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getNbPiece }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getNbChambre }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getSuperficie }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getPrix }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getChauffage }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getAnnee }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getLocalisation }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getEtat }}</td>
+                <td><button type="button" class="btn btn-warning"  >Modifier</button></td>
+                <td><button type="button" class="btn btn-danger"  >Supprimer</button></td>
+            </tr>
+        {% endfor %}
+        
+        
+    </table>
+    
+    {% endblock %}{# empty Twig template #}
