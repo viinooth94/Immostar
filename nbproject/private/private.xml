@@ -4,11 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/Immostar/src/Repository/BienRepository.php</file>
-            <file>file:/var/www/html/Immostar/templates/ajout_bien/AjoutBien.html.twig</file>
+            <file>file:/var/www/html/Immostar/src/Entity/User.php</file>
+            <file>file:/var/www/html/Immostar/src/Controller/UserSecurityController.php</file>
+            <file>file:/var/www/html/Immostar/src/Entity/Bien.php</file>
+            <file>file:/var/www/html/Immostar/config/packages/security.yaml</file>
+            <file>file:/var/www/html/Immostar/src/Repository/UserRepository.php</file>
+            <file>file:/var/www/html/Immostar/config/routes.yaml</file>
             <file>file:/var/www/html/Immostar/src/Form/BienType.php</file>
-            <file>file:/var/www/html/Immostar/src/Repository/TypeRepository.php</file>
+            <file>file:/var/www/html/Immostar/templates/user_security/login.html.twig</file>
             <file>file:/var/www/html/Immostar/src/Controller/AjoutBienController.php</file>
-            <file>file:/var/www/html/Immostar/templates/ajout_bien/Produit.html.twig</file>
             <file>file:/var/www/html/Immostar/templates/ajout_bien/BienParType.html.twig</file>
         </group>
     </open-files>

@@ -23,6 +23,8 @@ Formulaire Ajout Bien
                 <td style ="border:4px solid black;">Annee </td>
                 <td style ="border:4px solid black;">Lieu </td>
                 <td style ="border:4px solid black;">Etat actuel </td>
+                <td style ="border:4px solid black;">Type </td>
+                
             </tr>
             {% for unBien in bien %}
             <tr style ="border:4px solid black;">
@@ -35,8 +37,9 @@ Formulaire Ajout Bien
                 <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getAnnee }}</td>
                 <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getLocalisation }}</td>
                 <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getEtat }}</td>
+                <td style="background-color:#ea2786; border:4px solid #27eade;">{{ unBien.getType }}</td>
                 <td><a href="/bien/update/{{ unBien.id }}" ><button type="button" class="btn btn-warning">Modifier</button></a></td>
-                <td><button type="button" class="btn btn-danger" href="#" >Supprimer</button></td>
+                <td><a href="/bien/supprimer/{{unBIenid}}" ><button type="button" class="btn btn-danger"  >Supprimer</button></a></td>
             </tr>
         {% endfor %}
         

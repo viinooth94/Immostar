@@ -54,6 +54,16 @@ class BienRepository extends ServiceEntityRepository
 
     } 
     
+    public function rechercherParType2($type) {
+
+        $req =$this->_em->createQuery("SELECT b FROM App\Entity\Bien b JOIN b.Type t WHERE t.id = ?1 AND b.etat LIKE '%en attente%' ");
+        $req->setParameter(1, $type);
+            $bien = $req->getResult();
+        return $bien;
+
+    }
+    
+    
       
 
     // /**

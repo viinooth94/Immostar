@@ -1,3 +1,11 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+listebientype:
+   path: /liste_par_type/{id}
+   controller: App\Controller\AjoutBienController::listerBienParType
+
+_bien:
+    path: /bien
+    controller: App\Controller\AjoutBienController::AjoutBien
+
+Afficher_bien:
+    path: /Afficher_bien
+    controller: App\Controller\AjoutBienController::AfficherBien

@@ -10,18 +10,7 @@ use App\Entity\Bien;
 use App\Form\BienType;
 
 class AjoutBienController extends AbstractController
-{
-    /**
-     * @Route("/ajout", name="ajout_bien")
-     */
-    public function index()
-    {
-        return $this->render('ajout_bien/Produit.html.twig');
-    }
-    
-    /**
-     * @Route("/bien", name="_bien")
-     */
+{    
     public function AjoutBien(Request $query){
         
         $bien = new Bien() ;
@@ -42,9 +31,7 @@ class AjoutBienController extends AbstractController
         }
         return $this->render('ajout_bien/AjoutBien.html.twig',array('form'=> $form->createView(),));
     }
-    /**
-     * @Route("/Afficher_bien", name="Afficher_bien")
-     */
+    
     public function AfficherBien(){
         $em = $this->getDoctrine()->getManager();
  
@@ -81,21 +68,18 @@ class AjoutBienController extends AbstractController
         return $this->render( 'ajout_bien/AjoutBien.html.twig', array(
             'form' =>$form->createView(), 'bien'=>$bien));
     }
-     /**
-      * @Route("/liste_par_type/{id}", name="listebientype")
-      */
      
     public function listerBienParType(Request $request, $id) {
        
         $em = $this->getDoctrine()->getManager();
-        $type = $em->getRepository(Bien::class)->rechercherParType($id);    
+        $type = $em->getRepository(Bien::class)->rechercherParType2($id);    
         return $this->render('ajout_bien/BienParType.html.twig',array('bien'=>$type));
      }
      
     
       /**
       *
-      *@Route("/article/supprimer/{id}",name="del_art")
+      *@Route("/bien/supprimer/{id}",name="del_bien")
       *
       */
     public function deleteBien( $id){
